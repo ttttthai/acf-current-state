@@ -149,7 +149,7 @@ export default function Account() {
       {/* Logout Confirmation Modal */}
       {showLogoutConfirm && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-end justify-center">
-          <div className="w-full max-w-[430px] bg-white rounded-t-2xl p-6 animate-[slideUp_0.2s_ease-out]">
+          <div className="w-full max-w-[430px] bg-white rounded-t-2xl p-6" style={{animation: 'slideUp 0.2s ease-out'}}>
             <h3 className="text-base font-semibold text-aeon-text text-center mb-2">
               Đăng xuất?
             </h3>

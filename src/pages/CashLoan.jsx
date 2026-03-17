@@ -73,27 +73,6 @@ export default function CashLoan() {
     return new Intl.NumberFormat('vi-VN').format(num) + ' ₫'
   }
 
-  const InputField = ({ label, field, type = 'text', placeholder, maxLength }) => (
-    <div className="mb-4">
-      <label className="block text-xs font-medium text-aeon-text mb-1.5">
-        {label} <span className="text-aeon-red">*</span>
-      </label>
-      <input
-        type={type}
-        value={form[field]}
-        onChange={e => updateForm(field, e.target.value)}
-        placeholder={placeholder}
-        maxLength={maxLength}
-        className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${
-          errors[field] ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'
-        }`}
-      />
-      {errors[field] && (
-        <p className="text-xs text-aeon-red mt-1">{errors[field]}</p>
-      )}
-    </div>
-  )
-
   return (
     <div className="min-h-screen bg-aeon-bg">
       {/* Header */}
@@ -137,18 +116,42 @@ export default function CashLoan() {
         {currentStep === 1 && (
           <div>
             <h2 className="text-sm font-semibold text-aeon-text mb-4">Thông tin cá nhân</h2>
-            <InputField label="Họ và tên" field="hoTen" placeholder="Nguyễn Văn A" />
-            <InputField label="Số CCCD" field="cccd" placeholder="0123456789XX" maxLength={12} />
-            <InputField label="Ngày sinh" field="ngaySinh" type="date" />
-            <InputField label="Địa chỉ thường trú" field="diaChi" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/TP" />
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-aeon-text mb-1.5">Họ và tên <span className="text-aeon-red">*</span></label>
+              <input type="text" value={form.hoTen} onChange={e => updateForm('hoTen', e.target.value)} placeholder="Nguyễn Văn A" className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${errors.hoTen ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'}`} />
+              {errors.hoTen && <p className="text-xs text-aeon-red mt-1">{errors.hoTen}</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-aeon-text mb-1.5">Số CCCD <span className="text-aeon-red">*</span></label>
+              <input type="text" value={form.cccd} onChange={e => updateForm('cccd', e.target.value)} placeholder="0123456789XX" maxLength={12} className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${errors.cccd ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'}`} />
+              {errors.cccd && <p className="text-xs text-aeon-red mt-1">{errors.cccd}</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-aeon-text mb-1.5">Ngày sinh <span className="text-aeon-red">*</span></label>
+              <input type="date" value={form.ngaySinh} onChange={e => updateForm('ngaySinh', e.target.value)} className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${errors.ngaySinh ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'}`} />
+              {errors.ngaySinh && <p className="text-xs text-aeon-red mt-1">{errors.ngaySinh}</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-aeon-text mb-1.5">Địa chỉ thường trú <span className="text-aeon-red">*</span></label>
+              <input type="text" value={form.diaChi} onChange={e => updateForm('diaChi', e.target.value)} placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/TP" className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${errors.diaChi ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'}`} />
+              {errors.diaChi && <p className="text-xs text-aeon-red mt-1">{errors.diaChi}</p>}
+            </div>
           </div>
         )}
 
         {currentStep === 2 && (
           <div>
             <h2 className="text-sm font-semibold text-aeon-text mb-4">Thông tin thu nhập</h2>
-            <InputField label="Nơi làm việc" field="noiLamViec" placeholder="Tên công ty / tổ chức" />
-            <InputField label="Thu nhập hàng tháng" field="thuNhap" placeholder="VD: 15.000.000" />
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-aeon-text mb-1.5">Nơi làm việc <span className="text-aeon-red">*</span></label>
+              <input type="text" value={form.noiLamViec} onChange={e => updateForm('noiLamViec', e.target.value)} placeholder="Tên công ty / tổ chức" className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${errors.noiLamViec ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'}`} />
+              {errors.noiLamViec && <p className="text-xs text-aeon-red mt-1">{errors.noiLamViec}</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-xs font-medium text-aeon-text mb-1.5">Thu nhập hàng tháng <span className="text-aeon-red">*</span></label>
+              <input type="text" value={form.thuNhap} onChange={e => updateForm('thuNhap', e.target.value)} placeholder="VD: 15.000.000" className={`w-full px-3 py-2.5 text-sm border rounded-lg bg-white outline-none transition-all duration-200 ${errors.thuNhap ? 'border-aeon-red bg-red-50' : 'border-aeon-border focus:border-aeon-red focus:shadow-[0_0_0_2px_rgba(230,0,18,0.15)]'}`} />
+              {errors.thuNhap && <p className="text-xs text-aeon-red mt-1">{errors.thuNhap}</p>}
+            </div>
             <div className="mb-4">
               <label className="block text-xs font-medium text-aeon-text mb-1.5">
                 Loại hợp đồng lao động <span className="text-aeon-red">*</span>

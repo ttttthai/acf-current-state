@@ -37,6 +37,11 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 2px rgba(230, 0, 18, 0.15);
 }
 
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 2px; }
