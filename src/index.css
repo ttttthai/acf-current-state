@@ -1,37 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
-
-@theme {
-  --color-aeon-red: #E60012;
-  --color-aeon-red-dark: #C4000F;
-  --color-aeon-bg: #F8F9FA;
-  --color-aeon-card: #FFFFFF;
-  --color-aeon-text: #1A1A2E;
-  --color-aeon-muted: #6B7280;
-  --color-aeon-border: #E5E7EB;
-  --color-aeon-success: #10B981;
-  --color-aeon-warning: #F59E0B;
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: #E5E7EB;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   max-width: 430px;
   margin: 0 auto;
-  background-color: var(--color-aeon-bg);
+  background-color: #F8F9FA;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -39,35 +28,15 @@ body {
 }
 
 input, select, textarea {
-  font-family: var(--font-sans);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: var(--color-aeon-red) !important;
-  box-shadow: 0 0 0 2px rgba(230, 0, 18, 0.15);
   outline: none;
+  border-color: #E60012;
+  box-shadow: 0 0 0 2px rgba(230, 0, 18, 0.15);
 }
 
-/* Skeleton shimmer for loading states */
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
-  border-radius: 8px;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #D1D5DB;
-  border-radius: 2px;
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 2px; }
