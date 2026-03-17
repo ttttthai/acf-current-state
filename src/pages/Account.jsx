@@ -164,7 +164,7 @@ export default function Account() {
                 Hủy
               </button>
               <button
-                onClick={() => setShowLogoutConfirm(false)}
+                onClick={() => { setShowLogoutConfirm(false); navigate('/'); }}
                 className="flex-1 py-2.5 rounded-lg bg-aeon-red text-white text-sm font-medium transition-all duration-200 hover:bg-aeon-red-dark active:scale-[0.98]"
               >
                 Đăng xuất
